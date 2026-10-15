@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de empleados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>Listado de empleados</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre completo</th>
+                <th>DUI</th>
+                <th>Estado DUI</th>
+                <th>Antecedentes</th>
+                <th>Carné de junta</th>
+                <th>Observaciones</th>
+                <th>Fecha de registro</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for empleado in empleados %}
+            <tr>
+                <td>{{ empleado["id"] }}</td>
+                <td>{{ empleado["nombre_completo"] }}</td>
+                <td>{{ empleado["dui"] }}</td>
+                <td>{{ empleado["estado_dui"] }}</td>
+                <td>{{ empleado["estado_antecedentes"] }}</td>
+                <td>{{ empleado["estado_carnet_junta"] }}</td>
+                <td>{{ empleado["observaciones"] }}</td>
+                <td>{{ empleado["fecha_registro"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
