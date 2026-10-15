@@ -23,7 +23,26 @@ def crear_base_datos():
             fecha_registro TEXT DEFAULT CURRENT_TIMESTAMP
         )
     """)
+    # Agregar cinco registros de ejemplo
+    registros_ejemplo = [
+        ("Pedri Reyes", "00000001-1", "Entregado", "Entregado", "Entregado"),
+        ("Gabrielson Hernández", "00000002-2", "Entregado", "Pendiente", "Pendiente"),
+        ("Pietro Del Valle", "00000003-3", "Entregado", "Entregado", "Pendiente"),
+        ("Rodrigo Burgaleta", "00000004-4", "Pendiente", "Pendiente", "Pendiente"),
+        ("Dan Orihuela", "00000005-5", "Entregado", "Entregado", "Entregado")
+    ]
 
+    cursor.executemany("""
+        INSERT OR IGNORE INTO documentos (
+            nombre_completo,
+            dui,
+            estado_dui,
+            estado_antecedentes,
+            estado_carnet_junta
+        )
+        VALUES (?, ?, ?, ?, ?)
+    """, registros_ejemplo)
+    
     conexion.commit()
     conexion.close()
 
