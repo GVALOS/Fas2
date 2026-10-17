@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Expediente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Editar Expediente de Empleado</h1>
+    </header>
+
+    <main class="container">
+        {% if error %}
+            <div class="alert error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="/empleados/editar/{{ empleado['id'] }}" class="form-card">
+            <div class="form-group">
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" value="{{ empleado['nombre'] }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dui">DUI:</label>
+                <input type="text" id="dui" name="dui" value="{{ empleado['dui'] }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="estado_dui">Estado DUI:</label>
+                <select id="estado_dui" name="estado_dui" required>
+                    <option value="Entregado" {% if empleado['estado_dui'] == 'Entregado' %}selected{% endif %}>Entregado</option>
+                    <option value="Pendiente" {% if empleado['estado_dui'] == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+                    <option value="Vencido" {% if empleado['estado_dui'] == 'Vencido' %}selected{% endif %}>Vencido</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="estado_antecedentes">Estado Antecedentes:</label>
+                <select id="estado_antecedentes" name="estado_antecedentes" required>
+                    <option value="Entregado" {% if empleado['estado_antecedentes'] == 'Entregado' %}selected{% endif %}>Entregado</option>
+                    <option value="Pendiente" {% if empleado['estado_antecedentes'] == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+                    <option value="Vencido" {% if empleado['estado_antecedentes'] == 'Vencido' %}selected{% endif %}>Vencido</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="estado_carnet_junta">Estado Carnet de la Junta:</label>
+                <select id="estado_carnet_junta" name="estado_carnet_junta" required>
+                    <option value="Entregado" {% if empleado['estado_carnet_junta'] == 'Entregado' %}selected{% endif %}>Entregado</option>
+                    <option value="Pendiente" {% if empleado['estado_carnet_junta'] == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+                    <option value="Vencido" {% if empleado['estado_carnet_junta'] == 'Vencido' %}selected{% endif %}>Vencido</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <a href="/empleados" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

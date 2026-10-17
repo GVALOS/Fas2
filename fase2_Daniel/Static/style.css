@@ -1,0 +1,11 @@
+body { font-family: Arial, sans-serif; background: #f5f8ff; color: #0a1f44; margin: 20px; padding: 20px; }
+h1 { border-bottom: 3px solid #006dff; padding-bottom: 6px; }
+table { border-collapse: collapse; width: 100%; background: #ffffff; }
+th { background: #006dff; color: #ffffff; padding: 10px; text-align: left; }
+td { padding: 10px; border-bottom: 1px solid #e5e9f2; }
+label { display: block; margin-top: 12px; }
+input, select { padding: 8px; width: 260px; margin-bottom: 10px; }
+button, .btn { padding: 8px 14px; background: #006dff; color: #ffffff; border: 0; border-radius: 4px; cursor: pointer; text-decoration: none; }
+.btn-edit { background: #ffc107; color: #000; padding: 5px 10px; text-decoration: none; border-radius: 3px; }
+.btn-delete { background: #dc3545; color: #fff; padding: 5px 10px; border: 0; border-radius: 3px; cursor: pointer; }
+.error { color: #a00000; font-weight: bold; }
