@@ -51,7 +51,7 @@ Gabriel Avalos: Implementación de la conexión entre Flask y SQLite. Creación 
 Pedro Valle:
 Responsable de implementar la ruta /empleados/nuevo, desarrollar el formulario HTML para registrar empleados y procesar los datos mediante Flask.
 
-Daniel Brisuela:
+Daniel Brizuela:
 Responsable de implementar las rutas para editar y eliminar empleados, desarrollar los formularios necesarios y ejecutar las consultas SQL para modificar o eliminar registros de la base de datos. 
 
 Rodrigo Burgos:
