@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Expedientes Digitales</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Listado de Expedientes de Empleados</h1>
+    <a href="/empleados/nuevo" class="btn">Registrar Nuevo Empleado</a>
+    <a href="/resumen" class="btn btn-secondary">Ver resumen</a>
+    <br><br>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>DUI</th>
+                <th>Estado DUI</th>
+                <th>Antecedentes</th>
+                <th>Carnet Junta</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in empleados %}
+            <tr>
+                <td>{{ emp['id'] }}</td>
+                <td>{{ emp['nombre'] }}</td>
+                <td>{{ emp['dui'] }}</td>
+                <td><span class="estado estado-{{ emp['estado_dui']|lower }}">{{ emp['estado_dui'] }}</span></td>
+                <td><span class="estado estado-{{ emp['estado_antecedentes']|lower }}">{{ emp['estado_antecedentes'] }}</span></td>
+                <td><span class="estado estado-{{ emp['estado_carnet_junta']|lower }}">{{ emp['estado_carnet_junta'] }}</span></td>
+                <td>
+            
+                    <a href="/empleados/editar/{{ emp['id'] }}" class="btn-edit">Editar</a>
+                    
+                    
+                    <form method="POST" action="/empleados/eliminar/{{ emp['id'] }}" style="display:inline;" onsubmit="return confirm('¿Estás seguro de eliminar este expediente?');">
+                        <button type="submit" class="btn-delete">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

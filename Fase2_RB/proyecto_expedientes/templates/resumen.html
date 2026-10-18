@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resumen de Expedientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Resumen de Expedientes</h1>
+    <a href="/empleados" class="btn">Volver al listado</a>
+
+    <div class="tarjetas">
+        <div class="tarjeta">
+            <span class="numero">{{ total }}</span>
+            Expedientes en total
+        </div>
+        <div class="tarjeta completo">
+            <span class="numero">{{ completos }}</span>
+            Completos
+        </div>
+        <div class="tarjeta incompleto">
+            <span class="numero">{{ incompletos }}</span>
+            Incompletos
+        </div>
+        <div class="tarjeta sin-documentos">
+            <span class="numero">{{ sin_documentos }}</span>
+            Sin documentos
+        </div>
+    </div>
+
+    <p>{{ porcentaje_completos }}% de los expedientes está completo.</p>
+
+    <h2>Detalle por expediente</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>DUI</th>
+                <th>Documentos entregados</th>
+                <th>Clasificación</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fila in detalle %}
+            <tr class="fila-{{ fila.clase }}">
+                <td>{{ fila.id }}</td>
+                <td>{{ fila.nombre }}</td>
+                <td>{{ fila.dui }}</td>
+                <td>{{ fila.entregados }} de 3</td>
+                <td><span class="clasificacion {{ fila.clase }}">{{ fila.estado }}</span></td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5">Todavía no hay expedientes registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

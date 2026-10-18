@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Empleado</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Registrar Empleado</h1>
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    <form method="POST" action="/empleados/nuevo" class="form-card">
+        <label>Nombre:</label>
+        <input type="text" name="nombre">
+        <label>DUI:</label>
+        <input type="text" name="dui">
+        <label>Estado DUI:</label>
+        <select name="estado_dui">
+            <option value="Entregado">Entregado</option>
+            <option value="Pendiente" selected>Pendiente</option>
+            <option value="Vencido">Vencido</option>
+        </select>
+        <label>Estado Antecedentes:</label>
+        <select name="estado_antecedentes">
+            <option value="Entregado">Entregado</option>
+            <option value="Pendiente" selected>Pendiente</option>
+            <option value="Vencido">Vencido</option>
+        </select>
+        <label>Estado Carnet Junta:</label>
+        <select name="estado_carnet_junta">
+            <option value="Entregado">Entregado</option>
+            <option value="Pendiente" selected>Pendiente</option>
+            <option value="Vencido">Vencido</option>
+        </select>
+        <div class="form-actions">
+            <button type="submit">Guardar</button>
+            <a href="/empleados" class="btn btn-secondary">Regresar al listado</a>
+        </div>
+    </form>
+</body>
+</html>
