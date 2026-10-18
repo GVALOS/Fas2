@@ -24,11 +24,10 @@ La ruta /resumen recorre los registros mediante un ciclo for y emplea condicione
 Requisitos
 Se requiere Python y la biblioteca Flask.
 
-
 python -m pip install flask
-lugar de crear uno nuevo.
 python crear_bd.py
 python app.py
+
 - Listado de empleados: http://127.0.0.1:5000/empleados
 - Registro de empleados: http://127.0.0.1:5000/empleados/nuevo
 - Resumen documental: http://127.0.0.1:5000/resumen
