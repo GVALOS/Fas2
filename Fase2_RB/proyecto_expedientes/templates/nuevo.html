@@ -10,27 +10,39 @@
     {% if error %}<p class="error">{{ error }}</p>{% endif %}
     <form method="POST" action="/empleados/nuevo" class="form-card">
         <label>Nombre:</label>
-        <input type="text" name="nombre">
-        <label>DUI:</label>
-        <input type="text" name="dui">
+        <input type="text" name="nombre" required>
+        
+        <label>DUI (Ej. 12345678-9):</label>
+        <input type="text" name="dui" pattern="^\d{8}-\d{1}$" placeholder="12345678-9" title="Debe ser 8 dígitos, un guion y 1 dígito verificador" required>
+        
+        <label>Perfil / Puesto:</label>
+        <select name="perfil">
+            <option value="Administrativo">Administrativo</option>
+            <option value="Médico">Médico</option>
+            <option value="Enfermería">Enfermería</option>
+        </select>
+
         <label>Estado DUI:</label>
         <select name="estado_dui">
             <option value="Entregado">Entregado</option>
             <option value="Pendiente" selected>Pendiente</option>
             <option value="Vencido">Vencido</option>
         </select>
+        
         <label>Estado Antecedentes:</label>
         <select name="estado_antecedentes">
             <option value="Entregado">Entregado</option>
             <option value="Pendiente" selected>Pendiente</option>
             <option value="Vencido">Vencido</option>
         </select>
+        
         <label>Estado Carnet Junta:</label>
         <select name="estado_carnet_junta">
             <option value="Entregado">Entregado</option>
             <option value="Pendiente" selected>Pendiente</option>
             <option value="Vencido">Vencido</option>
         </select>
+        
         <div class="form-actions">
             <button type="submit">Guardar</button>
             <a href="/empleados" class="btn btn-secondary">Regresar al listado</a>
