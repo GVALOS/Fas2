@@ -7,7 +7,6 @@ def crear_base_datos():
     conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     
-    # Se agrega la columna 'perfil' para ajustar el checklist según el puesto del empleado
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS documentos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
